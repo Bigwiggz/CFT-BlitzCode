@@ -57,6 +57,13 @@ h1,h2,h3,h4,h5,h6{
     color: red;
 }
 
+/*Logo Font*/
+.logoFont{
+    font-family: 'Racing Sans One', cursive;
+    font-weight: 600;
+    font-style: italic;
+}
+
 /*PRISM CSS SETUP*/
 code[class*="language-"],
     pre[class*="language-"] {
