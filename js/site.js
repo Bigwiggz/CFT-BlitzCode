@@ -1,37 +1,49 @@
-// Prism JS Setup
+//Blitz Code Implementation
 
-// Prism JS Setup
+//geting starting values from the screen
+function getValues(){
+    //get teh values from the page
+    let startValue=parseFloat(document.getElementById("startValue").value);
+    let endValue=parseFloat(document.getElementById("endValue").value);
 
-// Validation Check
-let startValue=parseFloat(document.getElementById("startValue").value);
-let endValue=parseFloat(document.getElementById("endValue").value);
+    //generate the numbers return them in an array
+    let numbers=generateNumbers(startValue,endValue)
 
-//
-var tbodyRef = document.getElementById('myTable').getElementsByTagName('tbody')[0];
-
-// Insert a row at the end of table
-var newRow = tbodyRef.insertRow();
-
-// Insert a cell at the end of the row
-var newCell = newRow.insertCell();
-
-// Append a text node to the cell
-var newText = document.createTextNode('new row');
-newCell.appendChild(newText);
-
-function ValidateDataEntry(startValue, endValue){
-
-    if(startValue>endValue){
-        errorMessage="The starting number ("+ startValue +") must be less than the ending number ("+endValue+")";
-    }
-    else{
-        
-        for(let i=startValue; i<endValue; i++){
-            if(i%2==0){
-                class="gray";
-            }
-            else{
-            }
-        }
-    }
+    //display the results on the page
+    displayNumbers(numbers);
 }
+
+
+function generateNumbers(startValue,endValue){
+    
+    let numbersArray=[];
+
+    //loop over the values from start to end
+    for(let i=startValue; i<endValue; i++){
+        numbersArray.push(i);
+    }
+    return numbersArray;
+}
+
+function displayNumbers(numbers){
+    let className="even";
+    let templateRows="";
+
+    for(let i=0; i<numbers.length; i++){
+        let number=numbers[i];
+
+        if(number%2==0){
+            className="even"
+        }
+        else{
+            className="odd"
+        }
+
+        //Note **Prisom shows this line incorrect see the page source
+        templateRows+=`${number}`;
+    }
+
+    document.getElementById("results").innerHTML=templateRows;
+}
+
+
