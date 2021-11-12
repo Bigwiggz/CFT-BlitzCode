@@ -12,7 +12,7 @@ function getValues(){
     
     //Validate number entry
     if(Number.isInteger(startValue)==false || Number.isInteger(endValue)==false){
-        errorMessage="On or more of the values provided start value: "+ startValue +" or end value: "+ endValue +" are not numbers";
+        errorMessage="One or more of the values provided start value: "+ startValue +" or end value: "+ endValue +" are not numbers";
         let errorMessageDisplay=document.getElmentById("validation-summary");
         errorMessageDisplay.innerHTML=errorMessage;
     }
