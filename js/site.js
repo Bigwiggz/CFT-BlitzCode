@@ -54,7 +54,7 @@ function displayNumbers(numbers){
         templateRows+=`<tr><td class="${className}">${number}</td></tr>`;
     }
 
-    document.getElementById("results").innerHTML=templateRows;
+    document.getElementById("table-body").innerHTML=templateRows;
 }
 
 
