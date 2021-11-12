@@ -1,11 +1,22 @@
 //Blitz Code Implementation
 
+//Event Listener to start program when button is pushed
+let runBlitzCode=document.getElementById("btnSubmit");
+runBlitzCode.addEventListener("click",getValues);
+
 //geting starting values from the screen
 function getValues(){
-    //get teh values from the page
-    let startValue=parseFloat(document.getElementById("startValue").value);
-    let endValue=parseFloat(document.getElementById("endValue").value);
-
+    //get the values from the page
+    let startValue=parseInt(document.getElementById("startValue").value);
+    let endValue=parseInt(document.getElementById("endValue").value);
+    
+    //Validate number entry
+    if(Number.isInteger(startValue)==false || Number.isInteger(endValue)==false){
+        errorMessage="On or more of the values provided start value: "+ startValue +" or end value: "+ endValue +" are not numbers";
+        let errorMessageDisplay=document.getElmentById("validation-summary");
+        errorMessageDisplay.innerHTML=errorMessage;
+    }
+    
     //generate the numbers return them in an array
     let numbers=generateNumbers(startValue,endValue)
 
@@ -33,14 +44,14 @@ function displayNumbers(numbers){
         let number=numbers[i];
 
         if(number%2==0){
-            className="even"
+            className="even";
         }
         else{
-            className="odd"
+            className="odd";
         }
 
-        //Note **Prisom shows this line incorrect see the page source
-        templateRows+=`${number}`;
+        //Note **Prism shows this line incorrect see the page source
+        templateRows+=`<tr><td class="${className}">${number}</td></tr>`;
     }
 
     document.getElementById("results").innerHTML=templateRows;
